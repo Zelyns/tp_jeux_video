@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <i class="fa-solid fa-gamepad"></i>
+                <h1>Mon experience</h1>
+            </div>
+            <div class="header-actions">
+                <button id="addGameBtn" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Ajouter un Jeu</button>
+                <button id="exportBtn" class="btn btn-secondary"><i class="fa-solid fa-download"></i> Export</button>
+            </div>
+        </header>
+
+        <section class="stats-container" id="statsSection">
+            <div class="stat-card">
+                <h3>Total Jeux</h3>
+                <p id="statTotalGames">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Heures Jouées</h3>
+                <p id="statTotalHours">0h</p>
+            </div>
+            <div class="stat-card">
+                <h3>Note Moyenne</h3>
+                <p id="statAvgScore">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Terminés</h3>
+                <p id="statCompleted">0</p>
+            </div>
+        </section>
+
+        <section class="controls">
+            <div class="search-bar">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Rechercher un jeu...">
+            </div>
+            <div class="filters">
+                <select id="genreFilter">
+                    <option value="">Tous les Genres</option>
+                </select>
+                <select id="platformFilter">
+                    <option value="">Toutes Plateformes</option>
+                    <option value="PC">PC</option>
+                    <option value="PlayStation 5">PlayStation 5</option>
+                    <option value="PlayStation 4">PlayStation 4</option>
+                    <option value="Xbox Series X">Xbox Series X</option>
+                    <option value="Nintendo Switch">Nintendo Switch</option>
+                </select>
+                <select id="sortOrder">
+                    <option value="titre:asc">Titre (A-Z)</option>
+                    <option value="titre:desc">Titre (Z-A)</option>
+                    <option value="metacritic_score:desc">Meilleure Note</option>
+                    <option value="annee_sortie:desc">Plus Récent</option>
+                </select>
+            </div>
+        </section>
+
+        <main class="game-grid" id="gameGrid">
+        </main>
+    </div>
+
+    <div id="gameModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modalTitle">Ajouter un Jeu</h2>
+            <form id="gameForm">
+                <input type="hidden" id="gameId">
+
+                <div class="form-group">
+                    <label>Titre</label>
+                    <input type="text" id="titre" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Genre (séparés par virgule)</label>
+                        <input type="text" id="genre" placeholder="Action, Adventure" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Plateforme (séparés par virgule)</label>
+                        <input type="text" id="plateforme" placeholder="PC, PS5" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Éditeur</label>
+                        <input type="text" id="editeur">
+                    </div>
+                    <div class="form-group">
+                        <label>Développeur</label>
+                        <input type="text" id="developpeur">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Année Sortie</label>
+                        <input type="number" id="annee_sortie" min="1970" max="2099">
+                    </div>
+                    <div class="form-group">
+                        <label>Metacritic Score</label>
+                        <input type="number" id="metacritic_score" min="0" max="100">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Temps de Jeu (h)</label>
+                        <input type="number" id="temps_jeu_heures" min="0">
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <label>Terminé</label>
+                        <input type="checkbox" id="termine">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Sauvegarder</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
